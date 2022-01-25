@@ -1,4 +1,5 @@
 import { FormElementProps } from "../types/form-element";
+import classNames from "classnames";
 
 type Props = {
   label: string;
@@ -13,7 +14,7 @@ const Dropdown = ({ label, items, ...rest }: Props) => {
       <label htmlFor={dropdownId}>{label}</label>
       <select
         {...rest}
-        className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline text-black"
+        className={classNames("input-base", "text-black")}
         placeholder="Regular input"
       >
         {items.map((item, i) => (

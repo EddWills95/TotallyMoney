@@ -13,3 +13,10 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+html {
+    @apply text-black;
+}
+
+.input-base {
+    @apply w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:border-nepal-600;
+}

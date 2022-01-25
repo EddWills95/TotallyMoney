@@ -1,4 +1,5 @@
 import { FormElementProps } from "../types/form-element";
+import classNames from "classnames";
 
 type Props = {
   label: string;
@@ -14,7 +15,7 @@ const Datepicker = ({ label, ...rest }: Props) => {
         {...rest}
         id={pickerId}
         type="date"
-        className="w-full h-10 pl-3 pr-6 text-base border rounded-lg appearance-none focus:shadow-outline text-black"
+        className={classNames("input-base", "text-black")}
       />
     </div>
   );
