@@ -20,6 +20,7 @@
     "test:watch": "jest --watchAll"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2"
   }
 }
