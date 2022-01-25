@@ -1,0 +1,34 @@
+{
+  "customers": [
+    {
+      "title": "Mr",
+      "firstname": "Ollie",
+      "lastname": "Murphree",
+      "dob": "01/07/1970",
+      "annualIncome": 34000,
+      "employmentStatus": "Full time",
+      "houseNumber": 700,
+      "postcode": "BS14 9PR"
+    },
+    {
+      "title": "Miss",
+      "firstname": "Elizabeth",
+      "lastname": "Edmundson",
+      "dob": "29/06/1984",
+      "annualIncome": 17000,
+      "employmentStatus": "Student",
+      "houseNumber": 177,
+      "postcode": "PH12 8UW"
+    },
+    {
+      "title": "Mr",
+      "firstname": "Trevor",
+      "lastname": "Rieck",
+      "dob": "07/09/1990",
+      "annualIncome": 15000,
+      "employmentStatus": "Part time",
+      "houseNumber": 343,
+      "postcode": "TS25 2NF"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "types": [ "node" ],
+        "types": [ "node", "jest" ],
+        "lib": ["es6"],
+        "esModuleInterop": true
     },
     "typeRoots": [ "../node_modules/@types" ]
 }
