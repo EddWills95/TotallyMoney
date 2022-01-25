@@ -15,3 +15,13 @@ export type FormData = {
   houseNumber: number;
   postcode: string;
 };
+
+export type CreditCard = {
+  name: string;
+  apr: number;
+  balanceDuration: number;
+  purchaseDuration: number;
+  credit: number;
+};
+
+export type AvailableCreditCards = Array<CreditCard> | undefined;

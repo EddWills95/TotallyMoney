@@ -1,8 +1,11 @@
-import React from "react";
-import { FormData } from "./types";
-import FormInput from "./widgets/FormInput";
+import React, { useState } from "react";
+import { AvailableCreditCards, FormData } from "./types";
+import { FormInput, CreditCardSelector } from "./widgets";
 
 function App() {
+  const [availableCards, setAvailableCards] =
+    useState<AvailableCreditCards>(undefined);
+
   const handleSubmit = (formData: FormData) => {
     console.log("doing something");
     fetch("http://localhost:3001", {
@@ -15,7 +18,11 @@ function App() {
 
   return (
     <div className="flex flex-col h-full p-8 items-center justify-center text-white bg-mirage">
-      <FormInput onSubmit={handleSubmit} />
+      {availableCards ? (
+        <CreditCardSelector availableCards={availableCards} />
+      ) : (
+        <FormInput onSubmit={handleSubmit} />
+      )}
     </div>
   );
 }
