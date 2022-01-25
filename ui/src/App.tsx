@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Dropdown, Input, Datepicker, Button } from "./components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col h-full items-center justify-center text-white bg-mirage">
+      <div className="flex flex-col gap-4">
+        <Dropdown label="Title" items={["Mr", "Mrs", "Miss"]} />
+        <Input label="First name" placeholder="Joe" />
+        <Input label="Last name" placeholder="Bloggs" />
+        <Datepicker label="Date of Birth" />
+        <Input type="number" label="Income per annum" />
+        <Dropdown
+          label="Employment"
+          items={["Full time", "Part time", "Student"]}
+        />
+        {/* I think we should change house number to be free text */}
+        <Input type="number" label="House number" />
+        <Input label="Postcode" />
+        <Button>Check Eligibility</Button>
+      </div>
     </div>
   );
 }
