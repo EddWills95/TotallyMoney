@@ -1,10 +1,16 @@
 import React from "react";
+import { FormData } from "./types";
 import FormInput from "./widgets/FormInput";
 
 function App() {
-  const handleSubmit = () => {
-    // Send some stuff to the server
-    // When we get data back we can change to a different view
+  const handleSubmit = (formData: FormData) => {
+    console.log("doing something");
+    fetch("http://localhost:3001", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
   };
 
   return (

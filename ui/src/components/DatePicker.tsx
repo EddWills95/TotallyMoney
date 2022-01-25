@@ -1,4 +1,4 @@
-import { FormElementProps } from "../types/form-element";
+import { FormElementProps } from "../types";
 import classNames from "classnames";
 
 type Props = {

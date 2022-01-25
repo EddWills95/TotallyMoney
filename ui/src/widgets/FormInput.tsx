@@ -1,9 +1,10 @@
 import { Dropdown, Input, Datepicker, Button } from "../components";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FormData } from "../types";
 
 type Props = {
-  onSubmit: () => void;
+  onSubmit: (formData: FormData) => void;
 };
 
 const formSchema = Yup.object().shape({
@@ -30,7 +31,8 @@ const FormInput = ({ onSubmit }: Props) => {
       postcode: "",
     },
     onSubmit: (value) => {
-      console.log(value);
+      console.log(onSubmit);
+      onSubmit(value);
     },
     validationSchema: formSchema,
   });
