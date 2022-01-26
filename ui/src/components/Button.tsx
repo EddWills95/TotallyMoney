@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
   type: "button" | "submit" | "reset";
   disabled?: boolean;
+  onClick?: () => void;
 };
 
 const Button = ({ buttonType = "Primary", children, ...rest }: Props) => (

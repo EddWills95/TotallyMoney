@@ -1,5 +1,4 @@
 import { Anywhere, Liquid, Student } from "./cards";
-import { numberToHash } from "./utils";
 
 export const checkEligibility = (customerData) => {
   // Check each card and add to array;
