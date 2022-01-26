@@ -17,7 +17,7 @@ describe("TotallyMoney Credit Card Server", () => {
       // Loop through all mock customers
       for (const customer of customers) {
         const response = await request(server).post("/").send(customer);
-        expect(response.body).toContainEqual(anywhereCardInfo);
+        expect(response.body.cards).toContainEqual(anywhereCardInfo);
       }
     });
   });
@@ -25,17 +25,17 @@ describe("TotallyMoney Credit Card Server", () => {
   describe("Student Life", () => {
     it("should return for those with student employment status", async () => {
       const response = await request(server).post("/").send(student);
-      expect(response.body).toContainEqual(studentCardInfo);
+      expect(response.body.cards).toContainEqual(studentCardInfo);
     });
 
     it("should not return for those with full time employment", async () => {
       const response = await request(server).post("/").send(fullTime);
-      expect(response.body).not.toContainEqual(studentCardInfo);
+      expect(response.body.cards).not.toContainEqual(studentCardInfo);
     });
 
     it("should not return for those with part time employment", async () => {
       const response = await request(server).post("/").send(partTime);
-      expect(response.body).not.toContainEqual(studentCardInfo);
+      expect(response.body.cards).not.toContainEqual(studentCardInfo);
     });
   });
 
@@ -45,13 +45,35 @@ describe("TotallyMoney Credit Card Server", () => {
 
       for (let customer of eligible) {
         const response = await request(server).post("/").send(customer);
-        expect(response.body).toContainEqual(liquidCardInfo);
+        expect(response.body.cards).toContainEqual(liquidCardInfo);
       }
     });
 
     it("should not return for those with an income less than 16000", async () => {
       const response = await request(server).post("/").send(partTime);
-      expect(response.body).not.toContainEqual(liquidCardInfo);
+      expect(response.body.cards).not.toContainEqual(liquidCardInfo);
+    });
+  });
+
+  describe("intHash", () => {
+    it("should return an int hash based on the cards available", async () => {
+      const response = await request(server).post("/").send(student);
+      expect(response.body.intHash).toEqual(111);
+    });
+
+    it("should return student card with: 100", async () => {
+      const response = await request(server).get("/100").send(student);
+      expect(response.body.cards).toContainEqual(studentCardInfo);
+    });
+
+    it("should return anywhere card with: 100", async () => {
+      const response = await request(server).get("/010").send(student);
+      expect(response.body.cards).toContainEqual(anywhereCardInfo);
+    });
+
+    it("should return student card with: 100", async () => {
+      const response = await request(server).get("/001").send(student);
+      expect(response.body.cards).toContainEqual(liquidCardInfo);
     });
   });
 });
