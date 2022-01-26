@@ -14,6 +14,7 @@ class CreditCard {
 
   cardInfo() {
     return {
+      id: this.id,
       name: this.name,
       apr: this.apr,
       balanceDuration: this.balanceDuration,

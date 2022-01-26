@@ -2,6 +2,7 @@
 import CreditCard from "../credit-card";
 
 class Anywhere extends CreditCard {
+  id = "anywhere";
   name = "Anywhere Card";
   apr = 33.9;
   balanceDuration = 0;

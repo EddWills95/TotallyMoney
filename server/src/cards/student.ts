@@ -2,6 +2,7 @@ import CreditCard from "../credit-card";
 import { CustomerData } from "../types/customerData";
 
 class Student extends CreditCard {
+  id = "student";
   name = "Student Life";
   apr = 18.9;
   balanceDuration = 0;
