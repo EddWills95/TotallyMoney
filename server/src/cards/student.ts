@@ -6,7 +6,7 @@ class Student extends CreditCard {
   apr = 18.9;
   balanceDuration = 0;
   purchaseDuration = 0;
-  credit: 1200;
+  credit = 1200;
 
   static isEligible(customerData: CustomerData): boolean {
     if (customerData.employmentStatus === "Student") {
