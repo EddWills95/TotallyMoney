@@ -5,7 +5,7 @@ type Props = {
   label: string;
 } & FormElementProps;
 
-const Datepicker = ({ label, ...rest }: Props) => {
+const Datepicker = ({ label, errors, ...rest }: Props) => {
   const pickerId = `datepicker-${label}`;
 
   return (
@@ -17,7 +17,9 @@ const Datepicker = ({ label, ...rest }: Props) => {
         {...rest}
         id={pickerId}
         type="date"
-        className={classNames("input-base", "text-black")}
+        className={classNames("input-base", "text-black", {
+          "input-error": errors,
+        })}
       />
     </div>
   );

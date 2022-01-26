@@ -12,10 +12,12 @@ const formSchema = Yup.object().shape({
   firstname: Yup.string().required(),
   lastname: Yup.string().required(),
   dob: Yup.string().required(),
-  annualIncome: Yup.number().required(),
+  annualIncome: Yup.number().min(1).required(),
   employmentStatus: Yup.string().required(),
-  houseNumber: Yup.number().required(),
-  postcode: Yup.string().required(),
+  houseNumber: Yup.number().min(1).required(),
+  postcode: Yup.string()
+    .matches(/^[a-z]{1,2}\d[a-z\d]?\s*\d[a-z]{2}$/i)
+    .required(),
 });
 
 const FormInput = ({ onSubmit }: Props) => {
@@ -47,6 +49,7 @@ const FormInput = ({ onSubmit }: Props) => {
             items={["Mr", "Mrs", "Miss"]}
             onChange={formik.handleChange}
             value={formik.values.title}
+            errors={formik.errors.title}
           />
           <Input
             name="firstname"
@@ -54,6 +57,7 @@ const FormInput = ({ onSubmit }: Props) => {
             placeholder="Joe"
             onChange={formik.handleChange}
             value={formik.values.firstname}
+            errors={formik.errors.firstname}
           />
           <Input
             name="lastname"
@@ -61,12 +65,14 @@ const FormInput = ({ onSubmit }: Props) => {
             placeholder="Bloggs"
             onChange={formik.handleChange}
             value={formik.values.lastname}
+            errors={formik.errors.lastname}
           />
           <Datepicker
             name="dob"
             label="Date of Birth"
             onChange={formik.handleChange}
             value={formik.values.dob}
+            errors={formik.errors.dob}
           />
         </div>
         <div className="flex flex-col gap-4">
@@ -76,6 +82,7 @@ const FormInput = ({ onSubmit }: Props) => {
             label="Income per annum"
             onChange={formik.handleChange}
             value={formik.values.annualIncome}
+            errors={formik.errors.annualIncome}
           />
           <Dropdown
             name="employmentStatus"
@@ -83,6 +90,7 @@ const FormInput = ({ onSubmit }: Props) => {
             items={["Full time", "Part time", "Student"]}
             onChange={formik.handleChange}
             value={formik.values.employmentStatus}
+            errors={formik.errors.employmentStatus}
           />
           {/* I think we should change house number to be free text */}
           <Input
@@ -91,17 +99,19 @@ const FormInput = ({ onSubmit }: Props) => {
             label="House number"
             onChange={formik.handleChange}
             value={formik.values.houseNumber}
+            errors={formik.errors.houseNumber}
           />
           <Input
             name="postcode"
             label="Postcode"
             onChange={formik.handleChange}
             value={formik.values.postcode}
+            errors={formik.errors.postcode}
           />
         </div>
       </div>
       <div className="mt-8">
-        <Button type="submit" disabled={!formik.isValid}>
+        <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
           Check Eligibility
         </Button>
       </div>

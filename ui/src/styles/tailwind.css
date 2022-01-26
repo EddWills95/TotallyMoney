@@ -32,3 +32,7 @@ input:focus{
     @apply focus-visible:ring-2 focus-visible:ring-cloud-burst-50 focus-visible:ring-offset-2 focus-visible:ring-offset-mirage;
 }
 
+.input-error {
+    @apply ring-2 ring-offset-2 ring-offset-mirage ring-red-500;
+}
+

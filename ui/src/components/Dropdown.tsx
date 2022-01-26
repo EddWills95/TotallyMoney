@@ -17,7 +17,7 @@ const Dropdown = ({ label, items, errors, ...rest }: Props) => {
       <select
         {...rest}
         className={classNames("input-base", "text-black", {
-          "input-error": !!errors,
+          "input-error": errors,
         })}
         placeholder="Regular input"
       >
