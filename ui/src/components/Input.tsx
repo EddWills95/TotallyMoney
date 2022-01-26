@@ -16,8 +16,6 @@ const TextInput = ({
 }: Props) => {
   const inputId = `input-${label}`;
 
-  console.log(label, errors);
-
   return (
     <div className="relative w-full flex flex-col">
       <label className="input-label" htmlFor={inputId}>

@@ -33,9 +33,10 @@ const FormInput = ({ onSubmit }: Props) => {
       postcode: "",
     },
     onSubmit: (value) => {
-      console.log(onSubmit);
+      console.log("are we here");
       onSubmit(value);
     },
+
     validationSchema: formSchema,
   });
 
@@ -44,6 +45,7 @@ const FormInput = ({ onSubmit }: Props) => {
       <div className="flex flex-col sm:flex-row gap-8">
         <div className="flex flex-col gap-4">
           <Dropdown
+            data-testid="title-input"
             name="title"
             label="Title"
             items={["Mr", "Mrs", "Miss"]}
@@ -52,6 +54,7 @@ const FormInput = ({ onSubmit }: Props) => {
             errors={formik.errors.title}
           />
           <Input
+            data-testid="firstname-input"
             name="firstname"
             label="First name"
             placeholder="Joe"
@@ -60,6 +63,7 @@ const FormInput = ({ onSubmit }: Props) => {
             errors={formik.errors.firstname}
           />
           <Input
+            data-testid="lastname-input"
             name="lastname"
             label="Last name"
             placeholder="Bloggs"
@@ -68,15 +72,20 @@ const FormInput = ({ onSubmit }: Props) => {
             errors={formik.errors.lastname}
           />
           <Datepicker
+            data-testid="datepicker-input"
             name="dob"
             label="Date of Birth"
-            onChange={formik.handleChange}
+            onChange={(event) => {
+              console.log(event);
+              formik.handleChange(event);
+            }}
             value={formik.values.dob}
             errors={formik.errors.dob}
           />
         </div>
         <div className="flex flex-col gap-4">
           <Input
+            data-testid="income-input"
             name="annualIncome"
             type="number"
             label="Income per annum"
@@ -85,6 +94,7 @@ const FormInput = ({ onSubmit }: Props) => {
             errors={formik.errors.annualIncome}
           />
           <Dropdown
+            data-testid="employment-input"
             name="employmentStatus"
             label="Employment"
             items={["Full time", "Part time", "Student"]}
@@ -94,6 +104,7 @@ const FormInput = ({ onSubmit }: Props) => {
           />
           {/* I think we should change house number to be free text */}
           <Input
+            data-testid="houseNumber-input"
             name="houseNumber"
             type="number"
             label="House number"
@@ -102,6 +113,7 @@ const FormInput = ({ onSubmit }: Props) => {
             errors={formik.errors.houseNumber}
           />
           <Input
+            data-testid="postcode-input"
             name="postcode"
             label="Postcode"
             onChange={formik.handleChange}
@@ -111,7 +123,11 @@ const FormInput = ({ onSubmit }: Props) => {
         </div>
       </div>
       <div className="mt-8">
-        <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
+        <Button
+          data-testid="form-button"
+          type="submit"
+          disabled={!formik.isValid || !formik.dirty}
+        >
           Check Eligibility
         </Button>
       </div>
