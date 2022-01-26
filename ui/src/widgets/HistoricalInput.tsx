@@ -18,7 +18,7 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
   };
 
   return (
-    <div className="w-2/6 mt-12 flex flex-col gap-4">
+    <div className="mt-12 flex flex-col gap-4 justify-center items-center">
       <Input
         name="historical result"
         label="Previous Result"

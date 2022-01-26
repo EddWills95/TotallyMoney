@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { AvailableCreditCards, FormData } from "./types";
 import { FormInput, CreditCardSelector, HistoricalInput } from "./widgets";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { Button } from "./components";
+
+import "./styles/App.css";
 
 function App() {
   const [availableCards, setAvailableCards] =
@@ -20,14 +24,24 @@ function App() {
 
   return (
     <div className="flex flex-col h-full p-8 items-center justify-center text-white bg-mirage">
-      {availableCards ? (
-        <CreditCardSelector availableCards={availableCards} />
-      ) : (
-        <>
-          <FormInput onSubmit={handleSubmit} />
-          <HistoricalInput setAvailableCards={setAvailableCards} />
-        </>
-      )}
+      <SwitchTransition>
+        <CSSTransition
+          key={availableCards?.length ? "credit-card-selector" : "form-input"}
+          addEndListener={(node, done) =>
+            node.addEventListener("transitionend", done, false)
+          }
+          classNames="fade"
+        >
+          {availableCards ? (
+            <CreditCardSelector availableCards={availableCards} />
+          ) : (
+            <div>
+              <FormInput onSubmit={handleSubmit} />
+              <HistoricalInput setAvailableCards={setAvailableCards} />
+            </div>
+          )}
+        </CSSTransition>
+      </SwitchTransition>
     </div>
   );
 }

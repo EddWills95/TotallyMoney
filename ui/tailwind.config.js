@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        offWhite: "#FAF9F6",
         mirage: {
           DEFAULT: "#161925",
           50: "#5A6798",
