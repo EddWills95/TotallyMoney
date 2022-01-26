@@ -17,6 +17,18 @@ html {
     @apply text-black;
 }
 
-.input-base {
-    @apply w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:border-nepal-600;
+input:focus{
+    outline: none;
 }
+
+
+.input-label {
+    @apply inline-block mb-1;
+}
+
+.input-base {
+    @apply w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 rounded-lg appearance-none;
+    @apply focus:ring-2 focus:ring-cloud-burst-50 focus:ring-offset-2 focus:ring-offset-mirage;
+    @apply focus-visible:ring-2 focus-visible:ring-cloud-burst-50 focus-visible:ring-offset-2 focus-visible:ring-offset-mirage;
+}
+

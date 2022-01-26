@@ -9,7 +9,7 @@ type Props = {
 
 const Button = ({ buttonType = "Primary", children, ...rest }: Props) => (
   <button
-    className="input-base text-white disabled:cursor-not-allowed disabled:text-gray-500 border:gray-500"
+    className="input-base text-white disabled:cursor-not-allowed disabled:text-gray-500 ring-1 ring-gray-400"
     {...rest}
   >
     {children}

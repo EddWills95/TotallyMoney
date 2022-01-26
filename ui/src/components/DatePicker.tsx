@@ -10,7 +10,9 @@ const Datepicker = ({ label, ...rest }: Props) => {
 
   return (
     <div className="relative w-full flex flex-col">
-      <label htmlFor={pickerId}>{label}</label>
+      <label className="input-label" htmlFor={pickerId}>
+        {label}
+      </label>
       <input
         {...rest}
         id={pickerId}

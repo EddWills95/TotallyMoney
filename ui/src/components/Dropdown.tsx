@@ -6,15 +6,19 @@ type Props = {
   items: Array<any>;
 } & FormElementProps;
 
-const Dropdown = ({ label, items, ...rest }: Props) => {
+const Dropdown = ({ label, items, errors, ...rest }: Props) => {
   const dropdownId = `dropdown-${label}`;
 
   return (
     <div className="relative inline-block w-full">
-      <label htmlFor={dropdownId}>{label}</label>
+      <label className="input-label" htmlFor={dropdownId}>
+        {label}
+      </label>
       <select
         {...rest}
-        className={classNames("input-base", "text-black")}
+        className={classNames("input-base", "text-black", {
+          "input-error": !!errors,
+        })}
         placeholder="Regular input"
       >
         {items.map((item, i) => (

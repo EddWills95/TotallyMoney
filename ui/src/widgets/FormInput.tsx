@@ -39,8 +39,8 @@ const FormInput = ({ onSubmit }: Props) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="flex flex-col">
+      <div className="flex flex-col sm:flex-row gap-8">
+        <div className="flex flex-col gap-4">
           <Dropdown
             name="title"
             label="Title"
@@ -69,7 +69,7 @@ const FormInput = ({ onSubmit }: Props) => {
             value={formik.values.dob}
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           <Input
             name="annualIncome"
             type="number"
@@ -100,7 +100,7 @@ const FormInput = ({ onSubmit }: Props) => {
           />
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-8">
         <Button type="submit" disabled={!formik.isValid}>
           Check Eligibility
         </Button>
