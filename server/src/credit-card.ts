@@ -1,6 +1,7 @@
 import { CustomerData } from "./types/customerData";
 
 class CreditCard {
+  id: string;
   name: string;
   apr: number;
   balanceDuration: number;

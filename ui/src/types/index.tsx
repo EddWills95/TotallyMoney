@@ -17,6 +17,7 @@ export type FormData = {
 };
 
 export type CreditCard = {
+  id: string;
   name: string;
   apr: number;
   balanceDuration: number;
