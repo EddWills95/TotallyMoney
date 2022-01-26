@@ -10,6 +10,10 @@ function App() {
   const [availableCards, setAvailableCards] =
     useState<AvailableCreditCards>(undefined);
 
+  const resetCards = () => {
+    setAvailableCards(undefined);
+  };
+
   const handleSubmit = (formData: FormData) => {
     fetch("http://localhost:3001", {
       method: "POST",
@@ -23,7 +27,7 @@ function App() {
   console.log(availableCards);
 
   return (
-    <div className="flex flex-col h-full p-8 items-center justify-center text-white bg-mirage">
+    <div className="overflow-scroll flex flex-col h-full p-8 py-10 items-center text-white bg-mirage">
       <SwitchTransition>
         <CSSTransition
           key={availableCards?.length ? "credit-card-selector" : "form-input"}
@@ -33,7 +37,10 @@ function App() {
           classNames="fade"
         >
           {availableCards ? (
-            <CreditCardSelector availableCards={availableCards} />
+            <CreditCardSelector
+              availableCards={availableCards}
+              resetCards={resetCards}
+            />
           ) : (
             <div>
               <FormInput onSubmit={handleSubmit} />

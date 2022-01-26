@@ -10,7 +10,7 @@ const Card = ({
   purchaseDuration,
 }: Props) => {
   return (
-    <div className="min-w-[300px] min-h-[175px] bg-offWhite rounded-lg text-black p-4 flex flex-col justify-start items-end">
+    <div className="snap-center min-w-[300px] min-h-[175px] bg-offWhite rounded-lg text-black p-4 flex flex-col justify-start items-end">
       <h3 className="text-lg font-bold right">{name}</h3>
       <p className="font-mono">XXXX XXXX XXXX XXXX</p>
       <div className="flex justify-center w-full gap-4">

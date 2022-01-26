@@ -20,6 +20,8 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
   return (
     <div className="mt-12 flex flex-col gap-4 justify-center items-center">
       <Input
+        type="number"
+        max={111}
         name="historical result"
         label="Previous Result"
         placeholder="Revisit an old result"

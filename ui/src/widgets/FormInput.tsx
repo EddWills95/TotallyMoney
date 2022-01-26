@@ -43,7 +43,7 @@ const FormInput = ({ onSubmit }: Props) => {
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
-        <div className="flex flex-col sm:flex-row gap-8">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div className="flex flex-col gap-4">
             <Dropdown
               data-testid="title-input"

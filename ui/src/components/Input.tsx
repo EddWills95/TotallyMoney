@@ -5,6 +5,7 @@ type Props = {
   label: string;
   placeholder?: string;
   type?: "text" | "number";
+  max?: number;
 } & FormElementProps;
 
 const TextInput = ({
