@@ -75,10 +75,7 @@ const FormInput = ({ onSubmit }: Props) => {
             data-testid="datepicker-input"
             name="dob"
             label="Date of Birth"
-            onChange={(event) => {
-              console.log(event);
-              formik.handleChange(event);
-            }}
+            onChange={formik.handleChange}
             value={formik.values.dob}
             errors={formik.errors.dob}
           />
