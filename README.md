@@ -33,7 +33,8 @@ yarn dev
 - You can add the numbers to provide more than one card. I.e. `111` will return all the cards
 - I did this to make it easier during testing. It's also the start of a nifty feature
 
-- Animations are handle using both tailwind transitions and react-transition-group. I used this as an opportunity to try both out and I think tailwind's implementation is nicer but perhaps not as complete as the group
+- Animations are handled using both tailwind transitions and react-transition-group. I used this as an opportunity to try both out and I think tailwind's implementation is nicer but perhaps not as complete as the group
+- I think there is something a little off with my configuration of tailwind because hot module reload isn't working with the JIT compiler. create-react-app is likely hiding some things and messing it up, but I didn't want to go down the road of ejecting anything
 
 
 ### Server
