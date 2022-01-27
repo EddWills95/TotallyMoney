@@ -79,7 +79,7 @@ function App() {
             <h2 className="text-lg underline">Available Credit</h2>
             <ul className="flex grow flex-col">
               {selectedCards.map((card) => (
-                <li className="flex justify-between">
+                <li key={card.id} className="flex justify-between">
                   <span>{card.name}</span>
                   <span>{card.credit}</span>
                 </li>

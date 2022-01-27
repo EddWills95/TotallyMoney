@@ -56,6 +56,7 @@ const Card = ({
           type="checkbox"
           checked={selected}
           value={id}
+          readOnly
           onClick={() =>
             onSelect &&
             onSelect({
@@ -67,6 +68,7 @@ const Card = ({
               purchaseDuration,
             })
           }
+          onSelect={() => {}}
         />
         <h3 className="text-lg font-bold right">{name}</h3>
         <p className="font-mono">XXXX XXXX XXXX XXXX</p>
