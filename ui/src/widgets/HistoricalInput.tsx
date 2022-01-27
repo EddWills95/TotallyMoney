@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Input } from "../components";
+import { ErrorContext } from "../context";
 import { AvailableCreditCards } from "../types";
 
 type Props = {
@@ -8,6 +9,7 @@ type Props = {
 
 const HistoricalInput = ({ setAvailableCards }: Props) => {
   const [intHash, setIntHash] = useState<string>("");
+  const { setError } = useContext(ErrorContext);
 
   const handleSeeOldCards = (e: any) => {
     e.preventDefault();
@@ -15,7 +17,8 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
     fetch(`http://localhost:3001/${intHash}`)
       .then((r) => r.json())
       // This will also contain our intHash
-      .then((data) => setAvailableCards(data.cards));
+      .then((data) => setAvailableCards(data.cards))
+      .catch((err) => setError(err));
   };
 
   return (
