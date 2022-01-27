@@ -35,7 +35,6 @@ const FormInput = ({ onSubmit, ...rest }: Props) => {
     onSubmit: (value) => {
       onSubmit(value);
     },
-
     validationSchema: formSchema,
   });
 

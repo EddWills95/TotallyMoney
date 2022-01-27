@@ -27,7 +27,7 @@ const CreditCardSelector = ({ availableCards, ...rest }: Props) => {
   return (
     <div
       data-testid="card-selector"
-      className="w-full h-full px-4 sm:px-40 sm:w-8/12 overflow-x-scroll snap-x snap-mandatory flex flex-grow items-center justify-start"
+      className="w-full h-full px-4 sm:px-40 overflow-x-scroll snap-x snap-mandatory flex flex-grow items-center"
     >
       {availableCards?.map((card) => (
         <Card

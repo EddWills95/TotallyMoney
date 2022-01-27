@@ -6,7 +6,7 @@ type Props = {
   items: Array<any>;
 } & FormElementProps;
 
-const Dropdown = ({ label, items, errors, ...rest }: Props) => {
+const Dropdown = ({ label, items, errors, onChange, ...rest }: Props) => {
   const dropdownId = `dropdown-${label}`;
 
   return (
@@ -20,9 +20,12 @@ const Dropdown = ({ label, items, errors, ...rest }: Props) => {
           "input-error": errors,
         })}
         placeholder="Regular input"
+        onChange={onChange}
       >
         {items.map((item, i) => (
-          <option key={i}>{item}</option>
+          <option key={i} value={item}>
+            {item}
+          </option>
         ))}
       </select>
       <div className="absolute h-10 top-[24px] right-0 flex items-center px-2 pointer-events-none text-black">

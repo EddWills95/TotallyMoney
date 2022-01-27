@@ -31,6 +31,8 @@ const Card = ({
         "z-10",
         "snap-center",
         "transition-transform",
+        "mx-auto",
+        "my-0",
         {
           "scale-105": selected,
         }
