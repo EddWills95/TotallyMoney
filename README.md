@@ -54,3 +54,8 @@ yarn dev
 yarn test // (from either directory)
 ```
 
+### Other thoughts
+- The sky was the limit with this task and I think I got a bit bogged down in ideas that weren't essential to the task (the hash retrieval for example)
+- The transition libraries are quite hard to use and test
+- This was a really fun task that I felt like I could go to town on
+
