@@ -39,7 +39,12 @@ yarn dev
 
 ### Testing
 - Uses Jest as the test runner, react-testing-library for rendering
+- I'm not overly happy with the test suite
+    - Had some real problems mocking fetch and because of the transition group I had to mock all those components 
+    - This added a lot of complexity that I probably didn't need
+
 
 ```
 yarn test // (from either directory)
 ```
+
