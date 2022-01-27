@@ -17,6 +17,7 @@ const Card = ({
   purchaseDuration,
   onSelect,
   selected,
+  ...rest
 }: Props) => {
   const gradientBackground: string = id + "-gradient";
 
@@ -24,6 +25,7 @@ const Card = ({
 
   return (
     <div
+      {...rest}
       className={classNames(
         "p-4",
         "z-10",
@@ -52,6 +54,7 @@ const Card = ({
         )}
       >
         <input
+          data-testid="card-checkbox"
           className="absolute left-4 top-4 h-5 w-5 text-gray-600"
           type="checkbox"
           checked={selected}

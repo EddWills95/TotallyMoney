@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { CreditCard } from "../types";
 
-interface CardContextType {
+export interface CardContextType {
   selectedCards: CreditCard[];
   setSelectedCards: (cards: CreditCard[]) => void;
 }

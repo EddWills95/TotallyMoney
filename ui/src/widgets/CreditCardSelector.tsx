@@ -32,6 +32,7 @@ const CreditCardSelector = ({ availableCards, ...rest }: Props) => {
       {availableCards?.map((card) => (
         <Card
           {...card}
+          data-testid="credit-card"
           key={card.id}
           onSelect={handleSelect}
           selected={selectedCards.some((selected) => selected.id === card.id)}
