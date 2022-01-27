@@ -1,5 +1,8 @@
 # Edd Williams - TotallyMoney
 
+![image](https://user-images.githubusercontent.com/21102414/151379620-0145de41-ce5a-4a96-a129-ab5dedba5b69.png)
+
+
 ## Running
 UI:
 ```
