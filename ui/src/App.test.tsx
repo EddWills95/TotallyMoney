@@ -1,26 +1,25 @@
 import { act, render, waitForElementToBeRemoved } from "@testing-library/react";
+import { ReactNode } from "react";
 import App from "./App";
 
 let submitReference: any;
-let setAvailableCardsReference: any;
 
 jest.mock("./widgets", () => ({
   ...jest.requireActual("./widgets"),
-  FormInput: (props) => {
+  FormInput: (props: any) => {
     submitReference = props.onSubmit;
 
     return <div {...props}>FormInput</div>;
   },
-  HistoricalInput: (props) => {
-    setAvailableCardsReference = props.setAvailableCards;
+  HistoricalInput: (props: any) => {
     return <div {...props}>HistoricalInput</div>;
   },
 }));
 
 jest.mock("react-transition-group", () => ({
   ...jest.requireActual("react-transition-group"),
-  CSSTransition: ({ children }) => <>{children}</>,
-  SwitchTransition: ({ children }) => <>{children}</>,
+  CSSTransition: ({ children }: { children: ReactNode }) => <>{children}</>,
+  SwitchTransition: ({ children }: { children: ReactNode }) => <>{children}</>,
 }));
 
 let mockResponse: any = [];
