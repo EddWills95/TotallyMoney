@@ -2,9 +2,13 @@ import { createContext } from "react";
 import { CreditCard } from "../types";
 
 interface CardContextType {
-  selectedCards: Array<CreditCard> | undefined;
+  selectedCards: CreditCard[];
+  setSelectedCards: (cards: CreditCard[]) => void;
 }
 
-const CardContext = createContext<CardContextType | null>(null);
+const CardContext = createContext<CardContextType>({
+  selectedCards: [],
+  setSelectedCards: () => {},
+});
 
 export default CardContext;

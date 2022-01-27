@@ -20,7 +20,7 @@ const Card = ({
 }: Props) => {
   const gradientBackground: string = id + "-gradient";
 
-  const [grow, setGrow] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <div
@@ -90,9 +90,9 @@ const Card = ({
             "align-middle",
             "duration-500",
             "hover:cursor-pointer",
-            { "rotate-180": grow }
+            { "rotate-180": showDetails }
           )}
-          onClick={() => setGrow(!grow)}
+          onClick={() => setShowDetails(!showDetails)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +125,7 @@ const Card = ({
           "text-black",
           "-z-50",
           "transition-transform",
-          { "translate-y-[65px]": grow }
+          { "translate-y-[65px]": showDetails }
         )}
       >
         <div className="flex flex-row gap-2 justify-between">

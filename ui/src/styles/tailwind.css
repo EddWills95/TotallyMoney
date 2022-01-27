@@ -36,25 +36,6 @@ input:focus{
     @apply ring-2 ring-offset-2 ring-offset-mirage ring-red-500;
 }
 
-.fade-enter .btn {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  .fade-enter-active .btn {
-    opacity: 1;
-    transform: translateX(0%);
-}
-
-.fade-exit .btn {
-    opacity: 1;
-    transform: translateX(0%);
-}
-  .fade-exit-active .btn {
-    opacity: 0;
-    transform: translateX(100%);
-  }
-
   .student-gradient {
     background: #373B44;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to top, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Card } from "../components";
+import CardContext from "../context/cardsContext";
 import { AvailableCreditCards, CreditCard } from "../types";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const CreditCardSelector = ({ availableCards, resetCards }: Props) => {
-  const [selectedCards, setSelectedCards] = useState<Array<any>>([]);
+  const { selectedCards, setSelectedCards } = useContext(CardContext);
 
   const handleSelect = (card: CreditCard) => {
     if (selectedCards.some((selected) => selected.id === card.id)) {

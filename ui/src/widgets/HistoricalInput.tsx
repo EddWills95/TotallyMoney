@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEventHandler, useState } from "react";
 import { Button, Input } from "../components";
 import { AvailableCreditCards } from "../types";
 
@@ -9,7 +9,8 @@ type Props = {
 const HistoricalInput = ({ setAvailableCards }: Props) => {
   const [intHash, setIntHash] = useState<string>("");
 
-  const handleSeeOldCards = () => {
+  const handleSeeOldCards = (e: any) => {
+    e.preventDefault();
     // Fetch old cards
     fetch(`http://localhost:3001/${intHash}`)
       .then((r) => r.json())
@@ -18,7 +19,10 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
   };
 
   return (
-    <div className="mt-12 flex flex-col gap-4 justify-center items-center">
+    <form
+      onSubmit={handleSeeOldCards}
+      className="mt-12 flex flex-col gap-4 justify-center items-center"
+    >
       <Input
         type="number"
         max={111}
@@ -28,10 +32,10 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
         value={intHash}
         onChange={({ target: { value } }) => setIntHash(value)}
       />
-      <Button onClick={handleSeeOldCards} type="button" disabled={!!!intHash}>
+      <Button type="submit" disabled={!!!intHash}>
         See cards!
       </Button>
-    </div>
+    </form>
   );
 };
 
