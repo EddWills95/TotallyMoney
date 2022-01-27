@@ -1,4 +1,4 @@
-import { FormEventHandler, useState } from "react";
+import { useState } from "react";
 import { Button, Input } from "../components";
 import { AvailableCreditCards } from "../types";
 
@@ -24,6 +24,7 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
       className="mt-12 flex flex-col gap-4 justify-center items-center"
     >
       <Input
+        data-testid="historical-input"
         type="number"
         max={111}
         name="historical result"
@@ -32,7 +33,11 @@ const HistoricalInput = ({ setAvailableCards }: Props) => {
         value={intHash}
         onChange={({ target: { value } }) => setIntHash(value)}
       />
-      <Button type="submit" disabled={!!!intHash}>
+      <Button
+        data-testid="historical-button"
+        type="submit"
+        disabled={!!!intHash}
+      >
         See cards!
       </Button>
     </form>
