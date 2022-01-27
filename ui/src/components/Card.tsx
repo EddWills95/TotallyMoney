@@ -3,7 +3,10 @@ import { CreditCard } from "../types";
 
 import classNames from "classnames";
 
-type Props = CreditCard;
+type Props = {
+  onSelect?: (card: CreditCard) => void;
+  selected: boolean;
+} & CreditCard;
 
 const Card = ({
   id,
@@ -12,16 +15,59 @@ const Card = ({
   credit,
   balanceDuration,
   purchaseDuration,
+  onSelect,
+  selected,
 }: Props) => {
   const gradientBackground: string = id + "-gradient";
 
   const [grow, setGrow] = useState(false);
 
   return (
-    <div className="relative p-4 z-10">
+    <div
+      className={classNames(
+        "p-4",
+        "z-10",
+        "snap-center",
+        "transition-transform",
+        {
+          "scale-105": selected,
+        }
+      )}
+    >
       <div
-        className={`snap-center relative min-w-[300px] min-h-[175px] bg-offWhite rounded-lg p-4 flex flex-col justify-start items-end ${gradientBackground} text-gray-100 z-10`}
+        className={classNames(
+          "relative",
+          "min-w-[300px]",
+          "min-h-[175px]",
+          "bg-offWhite",
+          "rounded-lg",
+          "p-4",
+          "flex",
+          "flex-col",
+          "justify-start",
+          "items-end",
+          `${gradientBackground}`,
+          "text-gray-100",
+          "z-10"
+        )}
       >
+        <input
+          className="absolute left-4 top-4 h-5 w-5 text-gray-600"
+          type="checkbox"
+          checked={selected}
+          value={id}
+          onClick={() =>
+            onSelect &&
+            onSelect({
+              id,
+              name,
+              apr,
+              credit,
+              balanceDuration,
+              purchaseDuration,
+            })
+          }
+        />
         <h3 className="text-lg font-bold right">{name}</h3>
         <p className="font-mono">XXXX XXXX XXXX XXXX</p>
         <div className="flex mt-4 justify-center w-full gap-4 overflow-hidden">
@@ -46,9 +92,9 @@ const Card = ({
             "hover:cursor-pointer",
             { "rotate-180": grow }
           )}
+          onClick={() => setGrow(!grow)}
         >
           <svg
-            onClick={() => setGrow(!grow)}
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
             fill="none"
@@ -56,9 +102,9 @@ const Card = ({
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M19 9l-7 7-7-7"
             />
           </svg>
