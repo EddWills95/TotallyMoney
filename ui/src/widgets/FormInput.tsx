@@ -33,7 +33,6 @@ const FormInput = ({ onSubmit }: Props) => {
       postcode: "",
     },
     onSubmit: (value) => {
-      console.log("are we here");
       onSubmit(value);
     },
 

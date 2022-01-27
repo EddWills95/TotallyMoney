@@ -1,6 +1,5 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { FormInput } from ".";
+import FormInput from "./FormInput";
 
 const baseProps = {
   onSubmit: () => {},

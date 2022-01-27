@@ -5,10 +5,9 @@ import { AvailableCreditCards, CreditCard } from "../types";
 
 type Props = {
   availableCards: AvailableCreditCards;
-  resetCards: () => void;
 };
 
-const CreditCardSelector = ({ availableCards, resetCards }: Props) => {
+const CreditCardSelector = ({ availableCards }: Props) => {
   const { selectedCards, setSelectedCards } = useContext(CardContext);
 
   const handleSelect = (card: CreditCard) => {
