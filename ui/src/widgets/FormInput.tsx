@@ -20,7 +20,7 @@ const formSchema = Yup.object().shape({
     .required(),
 });
 
-const FormInput = ({ onSubmit }: Props) => {
+const FormInput = ({ onSubmit, ...rest }: Props) => {
   const formik = useFormik({
     initialValues: {
       title: "Mr",
@@ -41,7 +41,7 @@ const FormInput = ({ onSubmit }: Props) => {
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} {...rest}>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div className="flex flex-col gap-4">
             <Dropdown

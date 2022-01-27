@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { AvailableCreditCards, CreditCard, FormData } from "./types";
 import { FormInput, CreditCardSelector, HistoricalInput } from "./widgets";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
-import { Transition } from "@tailwindui/react";
 import CardsContext from "./context/cardsContext";
 
 import "./styles/App.css";
@@ -19,13 +18,18 @@ function App() {
   };
 
   const handleSubmit = (formData: FormData) => {
-    fetch("http://localhost:3001", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    })
-      .then((r) => r.json())
-      // This will also contain our intHash
-      .then((data) => setAvailableCards(data.cards));
+    return (
+      fetch("http://localhost:3001", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      })
+        .then((r) => r.json())
+        // This will also contain our intHash
+        .then((data) => {
+          setAvailableCards(data.cards);
+        })
+        .catch((err) => console.log(err))
+    );
   };
 
   return (
@@ -39,7 +43,7 @@ function App() {
             }
             classNames="fade"
           >
-            {availableCards ? (
+            {!!availableCards?.length ? (
               <>
                 <svg
                   onClick={resetCards}
@@ -57,55 +61,47 @@ function App() {
                   />
                 </svg>
                 <CreditCardSelector
+                  data-testid="card-selector"
                   availableCards={availableCards}
-                  resetCards={resetCards}
                 />
               </>
             ) : (
               <div>
-                <FormInput onSubmit={handleSubmit} />
+                <FormInput data-testid="form-input" onSubmit={handleSubmit} />
                 <HistoricalInput setAvailableCards={setAvailableCards} />
               </div>
             )}
           </CSSTransition>
         </SwitchTransition>
 
-        <Transition
-          show={!!selectedCards.length}
-          enter="transition-gpu transition-transform"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transition gpu transition-transform"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
+        <CSSTransition
+          key="total-credit"
+          in={!!selectedCards.length}
+          timeout={1000}
+          classNames="slide-up"
         >
-          {(ref) => (
-            <div
-              ref={ref}
-              className="fixed rounded-lg p-4 bottom-0 bg-offWhite transition-transform z-20 w-full h-auto text-black flex flex-col justify-between translate-y-full md:w-6/12"
-            >
-              <h2 className="text-lg underline">Available Credit</h2>
-              <ul className="flex grow flex-col">
-                {selectedCards.map((card) => (
-                  <li key={card.id} className="flex justify-between">
-                    <span>{card.name}</span>
-                    <span>{card.credit}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="fixed rounded-lg p-4 bottom-0 bg-offWhite transition-transform z-20 w-full h-auto text-black flex flex-col justify-between translate-y-full md:w-6/12">
+            <h2 className="text-lg underline">Available Credit</h2>
+            <ul className="flex grow flex-col">
+              {selectedCards.map((card) => (
+                <li key={card.id} className="flex justify-between">
+                  <span>{card.name}</span>
+                  <span>{card.credit}</span>
+                </li>
+              ))}
+            </ul>
 
-              <div className="flex mt-4">
-                <p className="ml-auto border-t-2 border-black">
-                  Total credit: £
-                  {selectedCards.reduce(
-                    (prev: number, curr: CreditCard) => (prev += curr.credit),
-                    0
-                  )}
-                </p>
-              </div>
+            <div className="flex mt-4">
+              <p className="ml-auto border-t-2 border-black">
+                Total credit: £
+                {selectedCards.reduce(
+                  (prev: number, curr: CreditCard) => (prev += curr.credit),
+                  0
+                )}
+              </p>
             </div>
-          )}
-        </Transition>
+          </div>
+        </CSSTransition>
       </div>
     </CardsContext.Provider>
   );

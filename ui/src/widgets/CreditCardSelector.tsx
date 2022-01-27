@@ -7,7 +7,7 @@ type Props = {
   availableCards: AvailableCreditCards;
 };
 
-const CreditCardSelector = ({ availableCards }: Props) => {
+const CreditCardSelector = ({ availableCards, ...rest }: Props) => {
   const { selectedCards, setSelectedCards } = useContext(CardContext);
 
   const handleSelect = (card: CreditCard) => {
@@ -25,7 +25,10 @@ const CreditCardSelector = ({ availableCards }: Props) => {
   }
 
   return (
-    <div className="w-full h-full px-4 sm:px-40 sm:w-8/12 overflow-x-scroll snap-x snap-mandatory flex flex-grow items-center justify-start">
+    <div
+      data-testid="card-selector"
+      className="w-full h-full px-4 sm:px-40 sm:w-8/12 overflow-x-scroll snap-x snap-mandatory flex flex-grow items-center justify-start"
+    >
       {availableCards?.map((card) => (
         <Card
           {...card}

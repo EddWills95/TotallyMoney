@@ -18,3 +18,19 @@
   .fade-exit-active {
     transition: opacity 500ms, transform 500ms;
   }
+
+  .slide-up-enter {
+    transform: translateY(0%);
+  }
+
+  .slide-up-enter-done {
+    transform: translateY(0%);
+  }
+
+  .slide-up-exit {
+    transform: translateY(100%);
+  }
+
+  .slide-up-exit-done {
+    transform: translateY(100%);
+  }

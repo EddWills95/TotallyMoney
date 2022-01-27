@@ -1,12 +1,9 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
+import { fireInputEvent } from "../test/utils";
 import FormInput from "./FormInput";
 
 const baseProps = {
   onSubmit: () => {},
-};
-
-const fireInputEvent = (input: HTMLElement, value: any) => {
-  fireEvent.change(input, { target: { value } });
 };
 
 describe("FormInput", () => {
